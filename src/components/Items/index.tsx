@@ -9,11 +9,24 @@ type ItemsProps = {
   popular: Item[];
   totalFeatured: number;
   totalPopular: number;
+  featuredPage: number;
+  popularPage: number;
+  setFeaturedPage: (n: number) => void;
+  setPopularPage: (n: number) => void;
 };
 
-const Items = ({ featured, popular, totalFeatured, totalPopular, onPageChange }: ItemsProps) => {
-  const [featuredPage, setFeaturedPage] = useState(0);
-  const [popularPage, setPopularPage] = useState(0);
+const Items = ({
+   featured,
+   popular,
+   totalFeatured,
+   totalPopular,
+   onPageChange,
+   featuredPage,
+   setFeaturedPage,
+   popularPage,
+   setPopularPage,
+}: ItemsProps) => {
+
 
   useEffect(() => {
     onPageChange({ pageFeatured: featuredPage, pagePopular: popularPage });
@@ -25,6 +38,7 @@ const Items = ({ featured, popular, totalFeatured, totalPopular, onPageChange }:
       {featured.map((fItem, i) => <ItemCard key={i} item={fItem} />)}
     </Box>
     <Pagination
+      page={featuredPage}
       count={ Math.floor(totalFeatured / PAGE_SIZE) }
       onChange={(e, value: number) => setFeaturedPage(value)}
     />
@@ -33,6 +47,7 @@ const Items = ({ featured, popular, totalFeatured, totalPopular, onPageChange }:
       {popular.map((pItem, i) => <ItemCard key={i} item={pItem} />)}
     </Box>
     <Pagination
+      page={popularPage}
       count={ Math.floor(totalPopular / PAGE_SIZE) }
       onChange={(e, value: number) => setPopularPage(value)}
     />

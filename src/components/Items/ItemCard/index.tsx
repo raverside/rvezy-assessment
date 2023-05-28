@@ -24,7 +24,7 @@ const ItemCard = ({ item }: ItemProps) => {
     {/*  loading="lazy"*/}
     {/*/>*/}
     <Box>{item.RVName}</Box>
-    <Box>{item.DefaultPrice}</Box>
+    <Box>${item.DefaultPrice}</Box>
   </Card>;
 }
 
