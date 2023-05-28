@@ -13,7 +13,6 @@ const HomePage = () => {
   const [popularPage, setPopularPage] = useState(1);
 
   const fetchItems = async (searchQuery?: SearchQuery) => {
-    console.log(searchQuery);
     const { popular, featured, totalFeatured, totalPopular } = await searchItems(searchQuery);
     setPopularItems(popular);
     setFeaturedItems(featured);
